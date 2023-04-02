@@ -9,3 +9,19 @@ body {
 * {
   color: hotpink;
 }
+
+.game-column {
+  border: none;
+}
+
+#start-button {
+  display: none;
+}
+
+#cancel-button {
+  display: none;
+}
+
+td {
+  border: none;
+}
