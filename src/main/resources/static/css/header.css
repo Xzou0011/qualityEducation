@@ -1,0 +1,35 @@
+.header-container {
+  /* background-color: pink; */
+  height: 120px;
+  display: grid;
+  /* grid-template-columns: 200px 200px; */
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 20px;
+}
+
+.header-item {
+  /* background-color: mediumspringgreen; */
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item1 {
+  width: 200px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.item2 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+/* .website-image {
+  background-color: cornflowerblue;
+}
+
+.nav {
+  widthbackground-color: peachpuff;
+} */
