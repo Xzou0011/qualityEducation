@@ -12,88 +12,122 @@
           crossorigin="anonymous"
   />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/header.css" />
 </head>
 <body>
-<div class="container">
-  <h2 class="mt-5 mb-5">Study Planner</h2>
-  <div style="display: block" class="mt-5" id="add-input-group">
-    <div class="row">
-      <div class="form-group col order-first">
-        <label for="name">Name</label>
-        <input
-                type="text"
-                name="name"
-                class="form-control"
-                id="name"
-                placeholder="Enter Name"
-                maxlength="50"
-        />
+<div class="header-container">
+  <div class="header-item item1">website image</div>
+  <div class="header-item item2">
+    <a href="/">Home</a>
+    &nbsp; &nbsp;
+    <a href="learning_program_homepage.html">Resources</a>
+    &nbsp;&nbsp;
+    <a href="game.html">Game</a>
+    &nbsp;&nbsp;
+    <a href="studyPlanner.html">Study Planner</a>
+    &nbsp;&nbsp;
+  </div>
+</div>
+<div class="grid-container">
+  <!-- animation area -->
+  <div class="animationArea hide" id="animationArea">something here</div>
+  <!-- task inputs -->
+  <div class="study-page-side">
+    <div style="display: block" class="mt-5" id="add-input-group">
+      <h2 class="mb-5">Study Planner</h2>
+      <div class="row">
+        <div class="form-group col order-first">
+          <label for="name">Name</label>
+          <input
+                  type="text"
+                  name="name"
+                  class="form-control"
+                  id="name"
+                  placeholder="Enter Name"
+                  maxlength="50"
+          />
+        </div>
+        <div class="form-group col">
+          <label for="date">Date</label>
+          <input
+                  type="date"
+                  name="date"
+                  class="form-control"
+                  id="date"
+                  placeholder="Enter Date"
+                  min="{{ today }}"
+          />
+        </div>
+        <div class="form-group col">
+          <label for="duration">Duration</label>
+          <input
+                  type="number"
+                  name="duration"
+                  class="form-control"
+                  id="duration"
+                  placeholder="Enter Duration in Minutes"
+          />
+        </div>
+        <div class="col-lg-12 mt-5">
+          <button class="btn btn-success" id="Submit" onclick="AddData()">
+            Add Data
+          </button>
+          <button class="btn btn-primary" id="Update">Update</button>
+        </div>
       </div>
-      <div class="form-group col">
-        <label for="date">Date</label>
-        <input
-                type="date"
-                name="date"
-                class="form-control"
-                id="date"
-                placeholder="Enter Date"
-                min="{{ today }}"
-        />
-      </div>
-      <div class="form-group col">
-        <label for="duration">Duration</label>
-        <input
-                type="number"
-                name="duration"
-                class="form-control"
-                id="duration"
-                placeholder="Enter Duration in Minutes"
-        />
-      </div>
-      <div class="col-lg-12 mt-5">
-        <button class="btn btn-success" id="Submit" onclick="AddData()">
-          Add Data
+    </div>
+    <!-- game: time and start button -->
+    <div style="display: none" class="mt-4" id="time-buttons">
+      <div class="row col-9 justify-content-start">
+        <div class="col-6 allTimeDisplay" style="font-size: 50px">
+          00 : 00 : 00
+        </div>
+        <button class="col-3 timer-controller" onclick="timerController()">
+          Start Game
         </button>
-        <button class="btn btn-primary" id="Update">Update</button>
       </div>
     </div>
-  </div>
-  <hr />
-  <div class="row mt-5">
-    <div class="col-12">
-      <table class="table" id="crudTable">
-        <thead>
-        <tr>
-          <th style="display: none" class="game-column">Game</th>
-          <th>Task Name</th>
-          <th>Date</th>
-          <th>Estimate Duration</th>
-          <th style="display: block" class="action-buttons">Actions</th>
-          <!-- <th>Complete</th> -->
-        </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+    <!-- table -->
+    <div class="row mt-4" id="tableArea">
+      <div class="col-9">
+        <table class="table" id="crudTable">
+          <thead>
+          <tr>
+            <th style="display: none" class="game-column">Game</th>
+            <th>Task Name</th>
+            <th>Date</th>
+            <th>Estimate Duration</th>
+            <th style="display: block" class="action-buttons">Actions</th>
+          </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
-  </div>
-  <div class="game-button-group">
-    <button
-            class="btn btn-danger"
-            id="game-mode-btn"
-            onclick="showCheckBox()"
-    >
-      game mode
-    </button>
-    <button class="btn btn-success" id="start-button" onclick="startGame()">
-      start
-    </button>
-    <button
-            class="btn btn-warning"
-            id="cancel-button"
-            onclick="cancelGameMode()"
-    >
-      Back to Study Planner
-    </button>
+    <!-- game-mode-buttons -->
+    <div class="game-button-group">
+      <button
+              class="btn btn-danger"
+              id="game-mode-btn"
+              onclick="showCheckBox()"
+      >
+        game mode
+      </button>
+      <button
+              class="btn btn-success"
+              id="start-button"
+              onclick="startGame()"
+      >
+        start
+      </button>
+      <button
+              class="btn btn-warning"
+              id="cancel-button"
+              onclick="cancelGameMode()"
+      >
+        Back to Study Planner
+      </button>
+    </div>
   </div>
 </div>
 

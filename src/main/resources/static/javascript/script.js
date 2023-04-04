@@ -47,7 +47,6 @@ function showData() {
   }
 
   var html = "";
-
   taskList.forEach(function (element, index) {
     html += "<tr>";
     html +=
@@ -62,7 +61,9 @@ function showData() {
         index +
         ')" class="btn btn-warning m-2">Update</button> </td>';
     html +=
-        "<td class='complete-column'> <button class='btn btn-danger'>Complete</button> </td>";
+        '<td style="display: none" class="complete-column" onclick="chanegCompleteRowStatus(' +
+        index +
+        ')"> <button class="btn btn-danger complete-button">Complete</button> </td>';
     html += "</tr>";
   });
 
@@ -89,6 +90,7 @@ function AddData() {
       name: name,
       date: date,
       duration: duration,
+      completed: false,
     });
 
     localStorage.setItem("taskList", JSON.stringify(taskList));
@@ -172,12 +174,17 @@ function showCheckBox() {
   }
 }
 
+//start game
+const timerDiv = document.getElementById("time-buttons");
+const animationArea = document.getElementById("animationArea");
+
 function startGame() {
-  var startButton = document.getElementById("start-button");
+  const startButton = document.getElementById("start-button");
   startButton.style.display = "none";
+  timerDiv.style.display = "block";
+  animationArea.style.display = "block";
   hideUnchecked();
   hideCheckColumn();
-  showCompleteColumn();
 }
 
 //back to the planner page and display all sections
@@ -195,8 +202,12 @@ function cancelGameMode() {
     gameModeButton.style.display = "block";
     startButton.style.display = "none";
     cancelButton.style.display = "none";
+    animationArea.style.display = "none";
   }
+  timerDiv.style.display = "none";
+  hideCompleteColumn();
   showAllRows();
+  resetTimer();
 }
 
 //when start the game, hide the check boxs column
@@ -232,9 +243,115 @@ function showAllRows() {
   });
 }
 
+//show the complete column
 function showCompleteColumn() {
   var completeColumn = document.getElementsByClassName("complete-column");
   for (let i = 0; i < completeColumn.length; i++) {
     completeColumn[i].style.display = "block";
   }
+}
+//hide the complete column
+function hideCompleteColumn() {
+  var completeColumn = document.getElementsByClassName("complete-column");
+  for (let i = 0; i < completeColumn.length; i++) {
+    completeColumn[i].style.display = "none";
+  }
+}
+
+function chanegCompleteRowStatus(index) {
+  var taskList;
+  if (localStorage.getItem("taskList") == null) {
+    taskList = [];
+  } else {
+    taskList = JSON.parse(localStorage.getItem("taskList"));
+  }
+
+  taskList[index].completed = true;
+  localStorage.setItem("taskList", JSON.stringify(taskList));
+}
+
+//when click the complete button the selected row change style
+// to line-through and italic
+const completeButton = document.querySelectorAll(".complete-button");
+completeButton.forEach((button) => {
+  button.addEventListener("click", () => {
+    const row = button.parentNode.parentNode;
+    const rowIndex = Array.from(row.parentNode.children).indexOf(row);
+    const selectedRow =
+        completeButton[rowIndex].parentNode.parentNode.parentNode;
+    console.log(selectedRow.getElementsByTagName("tr")[rowIndex]);
+    selectedRow.getElementsByTagName("tr")[rowIndex].style.textDecoration =
+        "line-through";
+    selectedRow.getElementsByTagName("tr")[rowIndex].style.fontStyle = "italic";
+  });
+});
+
+//timer start
+// var clickToPause = false;
+const playButtonClick = document.getElementsByClassName("timer-controller")[0];
+const allTimeDisplay = document.getElementsByClassName("allTimeDisplay")[0];
+
+var seconds = 0;
+var minutes = 0;
+var hours = 0;
+var clickToPause = false;
+
+//the time logic and display
+function timeDisplay() {
+  seconds++;
+  if (seconds == 60) {
+    seconds = 0;
+    minutes++;
+    if (minutes == 60) {
+      minutes = 0;
+      hours++;
+    }
+  }
+
+  //ensure the timer display in good-looking format
+  if (hours < 10) {
+    if (minutes < 10) {
+      allTimeDisplay.innerHTML =
+          "0" + hours + "&nbsp;:&nbsp;0" + minutes + "&nbsp;:&nbsp;" + seconds;
+    }
+    if (seconds < 10) {
+      allTimeDisplay.innerHTML =
+          "0" + hours + "&nbsp;:&nbsp;0" + minutes + "&nbsp;:&nbsp;0" + seconds;
+    }
+  } else {
+    if (minutes < 10) {
+      allTimeDisplay.innerHTML =
+          hours + "&nbsp;:&nbsp;0" + minutes + ":" + seconds;
+    }
+    if (seconds < 10) {
+      allTimeDisplay.innerHTML =
+          hours + "&nbsp;:&nbsp;0" + minutes + "&nbsp;:&nbsp;0" + seconds;
+    }
+  }
+  clickToPause = true;
+}
+
+//set interval as refreshed each second -> call timeDisplay function each second
+function timerController() {
+  if (clickToPause == false) {
+    playButtonClick.innerHTML = "Have a Rest";
+    alreasyPause = setInterval(timeDisplay, 1000);
+    showCompleteColumn();
+  } else {
+    playButtonClick.innerHTML = "Start";
+    clearInterval(alreasyPause);
+    clickToPause = false;
+    hideCompleteColumn();
+  }
+}
+
+//reset the timer to 0 when back to the planner page
+function resetTimer() {
+  playButtonClick.innerHTML = "Start";
+  clearInterval(alreasyPause);
+  clickToPause = false;
+  hours = 0;
+  minutes = 0;
+  seconds = 0;
+  allTimeDisplay.innerHTML = "00 : 00 : 00";
 }
