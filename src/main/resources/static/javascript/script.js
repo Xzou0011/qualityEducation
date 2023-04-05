@@ -341,18 +341,18 @@ function checkComplete() {
 const playButtonClick = document.getElementsByClassName("timer-controller")[0];
 const allTimeDisplay = document.getElementsByClassName("allTimeDisplay")[0];
 
-var seconds = 0;
-var minutes = 0;
-var hours = 0;
-var clickToPause = false;
+let seconds = 0;
+let minutes = 0;
+let hours = 0;
+let clickToPause = false;
 
 //the time logic and display
 function timeDisplay() {
   seconds++;
-  if (seconds == 60) {
+  if (seconds === 60) {
     seconds = 0;
     minutes++;
-    if (minutes == 60) {
+    if (minutes === 60) {
       minutes = 0;
       hours++;
     }
@@ -383,7 +383,7 @@ function timeDisplay() {
 
 //set interval as refreshed each second -> call timeDisplay function each second
 function timerController() {
-  if (clickToPause == false) {
+  if (clickToPause === false) {
     playButtonClick.innerHTML = "Have a Rest";
     alreasyPause = setInterval(timeDisplay, 1000);
     showCompleteColumn();
@@ -398,7 +398,7 @@ function timerController() {
 //reset the timer to 0 when back to the planner page
 function resetTimer() {
   playButtonClick.innerHTML = "Start";
-  clearInterval();
+  clearInterval(alreasyPause);
   clickToPause = false;
   hours = 0;
   minutes = 0;
