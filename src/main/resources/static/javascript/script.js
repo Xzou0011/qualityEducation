@@ -50,7 +50,7 @@ function showData() {
   taskList.forEach(function (element, index) {
     html += "<tr>";
     html +=
-        "<td style='display: none' class='game-column'> <input type='checkbox' class='check-boxs'> </td>";
+        "<td style='display: none' class='game-column' onchange='checkIfchecked()'> <input type='checkbox' class='check-boxs'> </td>";
     html += "<td>" + element.name + "</td>";
     html += "<td>" + element.date + "</td>";
     html += "<td>" + element.duration + "</td>";
@@ -73,7 +73,7 @@ function showData() {
 // Loads all data when page load
 document.onload = showData();
 
-//Function to add data to local storage
+//function to add new created task to local storage
 function AddData() {
   if (validateForm() == true) {
     var name = document.getElementById("name").value;
@@ -157,16 +157,13 @@ function showCheckBox() {
   var actionButtons = document.getElementsByClassName("action-buttons");
   var inputGroup = document.getElementById("add-input-group");
   var gameModeButton = document.getElementById("game-mode-btn");
-  var startButton = document.getElementById("start-button");
   var cancelButton = document.getElementById("cancel-button");
-  console.log(gameColumn.length);
   for (let i = 0; i < gameColumn.length; i++) {
     if (gameColumn[i].style.display === "none") {
       gameColumn[i].style.display = "block";
       actionButtons[i].style.display = "none";
       inputGroup.style.display = "none";
       gameModeButton.style.display = "none";
-      startButton.style.display = "inline";
       cancelButton.style.display = "inline";
     } else {
       return false;
@@ -174,15 +171,18 @@ function showCheckBox() {
   }
 }
 
-//start game
+//
+//game mode
 const timerDiv = document.getElementById("time-buttons");
 const animationArea = document.getElementById("animationArea");
 
+//start the game
 function startGame() {
   const startButton = document.getElementById("start-button");
   startButton.style.display = "none";
   timerDiv.style.display = "block";
-  animationArea.style.display = "block";
+  //display animation
+  // animationArea.style.display = "block";
   hideUnchecked();
   hideCheckColumn();
 }
@@ -208,6 +208,9 @@ function cancelGameMode() {
   hideCompleteColumn();
   showAllRows();
   resetTimer();
+  checkComplete();
+  //clear the check box
+  updateCheckBoxToUncheck();
 }
 
 //when start the game, hide the check boxs column
@@ -216,6 +219,34 @@ function hideCheckColumn() {
 
   for (let i = 0; i < gameColumn.length; i++) {
     gameColumn[i].style.display = "none";
+  }
+}
+
+//check if any checkBox checked, if so, display start button
+function checkIfchecked() {
+  const checkBoxs = document.querySelectorAll(".check-boxs");
+  const startButton = document.getElementById("start-button");
+
+  let isChecked = false;
+  for (let i = 0; i < checkBoxs.length; i++) {
+    if (checkBoxs[i].checked) {
+      isChecked = true;
+      break;
+    }
+  }
+
+  if (isChecked) {
+    startButton.style.display = "inline";
+  } else {
+    startButton.style.display = "none";
+  }
+}
+
+//update the checkbox to uncheck when back to study planner page
+function updateCheckBoxToUncheck() {
+  const checkBoxs = document.querySelectorAll(".check-boxs");
+  for (let i = 0; i < checkBoxs.length; i++) {
+    checkBoxs[i].checked = false;
   }
 }
 
@@ -258,6 +289,8 @@ function hideCompleteColumn() {
   }
 }
 
+//user click complete button, the attribute completed will change from false
+//to true
 function chanegCompleteRowStatus(index) {
   var taskList;
   if (localStorage.getItem("taskList") == null) {
@@ -279,15 +312,32 @@ completeButton.forEach((button) => {
     const rowIndex = Array.from(row.parentNode.children).indexOf(row);
     const selectedRow =
         completeButton[rowIndex].parentNode.parentNode.parentNode;
-    console.log(selectedRow.getElementsByTagName("tr")[rowIndex]);
     selectedRow.getElementsByTagName("tr")[rowIndex].style.textDecoration =
         "line-through";
     selectedRow.getElementsByTagName("tr")[rowIndex].style.fontStyle = "italic";
+    //hide the button when click
+    button.style.display = "none";
   });
 });
 
+//check whether the task was completed during the game mode
+function checkComplete() {
+  var taskList;
+  if (localStorage.getItem("taskList") == null) {
+    taskList = [];
+  } else {
+    taskList = JSON.parse(localStorage.getItem("taskList"));
+  }
+
+  taskList.forEach((element, index) => {
+    if (element.completed === true) {
+      deleteData(index);
+    }
+  });
+}
+
+//
 //timer start
-// var clickToPause = false;
 const playButtonClick = document.getElementsByClassName("timer-controller")[0];
 const allTimeDisplay = document.getElementsByClassName("allTimeDisplay")[0];
 
@@ -333,7 +383,7 @@ function timeDisplay() {
 
 //set interval as refreshed each second -> call timeDisplay function each second
 function timerController() {
-  if (clickToPause == false) {
+  if (clickToPause === false) {
     playButtonClick.innerHTML = "Have a Rest";
     alreasyPause = setInterval(timeDisplay, 1000);
     showCompleteColumn();
@@ -348,7 +398,7 @@ function timerController() {
 //reset the timer to 0 when back to the planner page
 function resetTimer() {
   playButtonClick.innerHTML = "Start";
-  clearInterval(alreasyPause);
+  clearInterval();
   clickToPause = false;
   hours = 0;
   minutes = 0;
