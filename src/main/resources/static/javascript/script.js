@@ -289,20 +289,6 @@ function hideCompleteColumn() {
   }
 }
 
-//user click complete button, the attribute completed will change from false
-//to true
-function chanegCompleteRowStatus(index) {
-  var taskList;
-  if (localStorage.getItem("taskList") == null) {
-    taskList = [];
-  } else {
-    taskList = JSON.parse(localStorage.getItem("taskList"));
-  }
-
-  taskList[index].completed = true;
-  localStorage.setItem("taskList", JSON.stringify(taskList));
-}
-
 //when click the complete button the selected row change style
 // to line-through and italic
 const completeButton = document.querySelectorAll(".complete-button");
@@ -319,6 +305,20 @@ completeButton.forEach((button) => {
     button.style.display = "none";
   });
 });
+
+//user click complete button, the attribute completed will change from false
+//to true
+function chanegCompleteRowStatus(index) {
+  var taskList;
+  if (localStorage.getItem("taskList") == null) {
+    taskList = [];
+  } else {
+    taskList = JSON.parse(localStorage.getItem("taskList"));
+  }
+
+  taskList[index].completed = true;
+  localStorage.setItem("taskList", JSON.stringify(taskList));
+}
 
 //check whether the task was completed during the game mode
 function checkComplete() {
@@ -383,7 +383,7 @@ function timeDisplay() {
 
 //set interval as refreshed each second -> call timeDisplay function each second
 function timerController() {
-  if (clickToPause === false) {
+  if (clickToPause == false) {
     playButtonClick.innerHTML = "Have a Rest";
     alreasyPause = setInterval(timeDisplay, 1000);
     showCompleteColumn();
