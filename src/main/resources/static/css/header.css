@@ -1,10 +1,11 @@
 .header-container {
+  font-size: 25px;
   /* background-color: pink; */
-  height: 120px;
+  height: 110px;
   display: grid;
   /* grid-template-columns: 200px 200px; */
   grid-template-columns: 1fr 1fr;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .header-item {
@@ -26,10 +27,13 @@
   grid-column-end: 4;
 }
 
-/* .website-image {
-  background-color: cornflowerblue;
+a:hover {
+  cursor: pointer;
+  color: #32bca3;
 }
 
-.nav {
-  widthbackground-color: peachpuff;
-} */
+a {
+  font-weight: 18px;
+  color: #191d21;
+  text-decoration: none;
+}

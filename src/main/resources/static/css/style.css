@@ -1,24 +1,141 @@
 * {
-  font-size: 18px;
   margin: 0;
   padding: 0%;
+  font-family: sans-serif;
   /* box-sizing: border-box; */
+}
+
+body {
+  font-size: 18px;
+  height: 100vh;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  /* grid-template-rows: max-content; */
+  grid-template-areas: "animationSide studyPageSide";
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.study-page-side {
+  width: 900px;
+  grid-area: studyPageSide;
+  /* border: 2px solid black; */
+}
+
+label {
+  font-weight: bold;
+}
+
+#tableArea {
+  border: 2px solid #32bca3;
+  border-radius: 25px;
+  border-spacing: 10px;
+  margin-bottom: 10px;
+}
+
+#crudTable {
+  width: 900px;
+}
+
+thead {
+  color: #32bca3;
+}
+
+tbody {
+  font-weight: bold;
+}
+
+.delete-button {
+  background-color: #3f15ea;
+  color: white;
+  border-radius: 300px;
+  width: 100px;
+}
+
+.update-button {
+  background-color: #3f15ea;
+  margin-left: 10px;
+  color: white;
+  border-radius: 300px;
+  width: 100px;
+}
+
+#cancel-button {
+  background-color: #3f15ea;
+  color: white;
+  border-radius: 300px;
+  width: 200px;
+}
+
+#start-button {
+  background-color: #32bca3;
+  color: white;
+  border-radius: 300px;
+  width: 100px;
+}
+
+table td:nth-child(1) {
+  width: 200px;
+}
+
+table td:nth-child(2) {
+  width: 300px;
+}
+
+table td:nth-child(3) {
+  width: 200px;
+}
+
+table td:nth-child(4) {
+  width: 150px;
+}
+
+table td:nth-child(5) {
+  width: 250px;
+}
+table td:nth-child(6) {
+  width: 200px;
+}
+
+.sub-line {
+  font-size: 18px;
+  margin-left: 15px;
+}
+
+#Submit {
+  height: 68px;
+  width: 200px;
+  background-color: #32bca3;
+  font-weight: bold;
+  border-radius: 300px;
+  color: white;
+  font-size: 19px;
+}
+
+.game-button-group {
+  display: flex;
+  justify-content: right;
+}
+
+#game-mode-btn {
+  height: 68px;
+  width: 200px;
+  background-color: #32bca3;
+  font-weight: bold;
+  margin-right: 20px;
+  border-radius: 300px;
+  color: white;
+  font-size: 19px;
 }
 
 #Update {
   display: none;
 }
-
-/* need remove */
-body {
-  background: black;
-  height: 100vh;
-}
-
-* {
-  color: hotpink;
-}
-/* need remove */
 
 .game-column {
   border: none;
@@ -36,32 +153,6 @@ td {
   border: none;
 }
 
-/* grid */
-/* #add-input-group {
-  grid-area: inputArea;
-  background-color: aliceblue;
-}
-
-#time-buttons {
-  grid-area: timeArea;
-}
-
-#tableArea {
-  display: -ms-flexbox;
-  grid-area: tableArea;
-}
-
-#crudTable {
-  width: 900px;
-}
-
-.animationArea {
-  grid-area: animation;
-  background-color: dodgerblue;
-  height: 800px;
-  display: none;
-} */
-
 .animationArea {
   grid-area: animationSide;
   background-color: dodgerblue;
@@ -70,15 +161,17 @@ td {
   display: none;
 }
 
-.study-page-side {
-  width: 900px;
-  grid-area: studyPageSide;
-  background-color: aquamarine;
+.timer-controller {
+  background-color: #32bca3;
+  color: white;
+  width: 200px;
+  font-size: 27px;
+  font-weight: bold;
+  border-radius: 100px;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto;
-  /* grid-template-rows: max-content; */
-  grid-template-areas: "animationSide studyPageSide";
+.trophy {
+  margin-top: -30px;
+  margin-left: 23%;
+  width: 200px;
 }

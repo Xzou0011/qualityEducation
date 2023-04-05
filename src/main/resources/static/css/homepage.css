@@ -1,22 +1,15 @@
 * {
-  font-size: 25px;
   margin: 0;
   padding: 0%;
-  /* box-sizing: border-box; */
+  font-family: sans-serif;
 }
 
 body {
+  font-size: 18px;
   height: 100vh;
-  /* overflow-x: hidden; */
 }
 
-/* body {
-  background-color: slateblue;
-  padding: 2%;
-} */
-
 .main {
-  /* background-color: aquamarine; */
   overflow: auto;
 }
 
@@ -27,7 +20,6 @@ body {
 }
 
 .grid-item {
-  /* background-color: bisque; */
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -35,12 +27,10 @@ body {
 }
 
 .programs-container {
-  /* background-color: indianred; */
   height: auto;
   grid-template-columns: 360px 360px 360px;
   column-gap: 70px;
   padding: 1%;
-  /* margin-bottom: 100px; */
 }
 
 .programs-item {
@@ -49,12 +39,10 @@ body {
 }
 
 .values-container {
-  /* background-color: aqua; */
   height: 440px;
   grid-template-columns: 360px 360px 360px;
   column-gap: 70px;
   padding: 1%;
-  /* margin-bottom: 20px; */
 }
 
 .values-item {
@@ -63,18 +51,15 @@ body {
 }
 
 .first-container {
-  /* background-color: palevioletred; */
   height: 600px;
   margin-bottom: 8%;
 }
 
 .introduction-container {
-  /* background-color: salmon; */
   height: 500px;
   grid-template-columns: 200px 200px;
   column-gap: 80px;
   padding: 1%;
-  /* margin-bottom: 5%; */
 }
 
 .introduction-item-1 {
@@ -96,9 +81,6 @@ footer {
   height: 50px;
   position: relative;
   bottom: 0;
-  /* background-color: black;
-  opacity: 0.3; */
-  /* color: white; */
 }
 
 .programs-item:hover {
