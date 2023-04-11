@@ -1,3 +1,10 @@
+* {
+    margin: 0;
+    padding: 0%;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
 body {
     height: 100vh;
     overflow: auto;
@@ -66,7 +73,7 @@ input {
 }
 
 .caterBtn {
-    width: 35%;
+    width: 20%;
     border: none;
     background-color: #32bca3;
     opacity: 70%;

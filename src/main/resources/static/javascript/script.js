@@ -111,10 +111,12 @@ function AddData() {
     });
 
     localStorage.setItem("taskList", JSON.stringify(taskList));
-    showData();
+
     document.getElementById("name").value = "";
     document.getElementById("date").value = "";
     document.getElementById("duration").value = "";
+    location.reload();
+    showData();
   }
 }
 
@@ -129,6 +131,7 @@ function deleteData(index) {
 
   taskList.splice(index, 1);
   localStorage.setItem("taskList", JSON.stringify(taskList));
+  location.reload();
   showData();
 }
 
@@ -155,6 +158,7 @@ function updateData(index) {
       taskList[index].duration = document.getElementById("duration").value;
 
       localStorage.setItem("taskList", JSON.stringify(taskList));
+      location.reload();
 
       showData();
 
@@ -220,14 +224,15 @@ function cancelGameMode() {
     startButton.style.display = "none";
     cancelButton.style.display = "none";
     animationArea.style.display = "none";
+    // checkComplete();
+    checkComplete();
   }
   timerDiv.style.display = "none";
   hideCompleteColumn();
-  showAllRows();
   //clear the check box
   updateCheckBoxToUncheck();
-  checkComplete();
   resetTimer();
+  showAllRows();
 }
 
 //when start the game, hide the check boxs column
