@@ -199,7 +199,7 @@ function startGame() {
   startButton.style.display = "none";
   timerDiv.style.display = "block";
   //display animation
-  // animationArea.style.display = "block";
+  animationArea.style.display = "block";
   hideUnchecked();
   hideCheckColumn();
 }
@@ -402,3 +402,61 @@ function checkComplete() {
     }
   });
 }
+
+//animation
+
+// completeButton.forEach((button) => {
+//   button.addEventListener("click", () => {
+//     const row = button.parentNode.parentNode;
+//     const rowIndex = Array.from(row.parentNode.children).indexOf(row);
+//     const selectedRow =
+//       completeButton[rowIndex].parentNode.parentNode.parentNode;
+//     selectedRow.getElementsByTagName("tr")[rowIndex].style.textDecoration =
+//       "line-through";
+//     selectedRow.getElementsByTagName("tr")[rowIndex].style.fontStyle = "italic";
+//     //hide the button when click
+//     button.style.display = "none";
+//   });
+// });
+
+const rocketGroup = document.getElementById("rocketGroup");
+const rocket = document.getElementById("rocket");
+const fire = document.getElementById("fire");
+const cloud = document.getElementById("cloud");
+const smoke = document.getElementById("whitesmoke");
+
+//the animation
+window.addEventListener("DOMContentLoaded", () => {
+  completeButton.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (fire.classList.contains("hide")) {
+        fire.classList.remove("hide");
+        smoke.classList.remove("hide");
+        smoke.classList.add("disappear");
+        rocket.classList.add("move");
+      } else if (cloud.classList.contains("hide")) {
+        cloud.classList.remove("hide");
+        cloud.classList.add("appear");
+      } else if (cloud.classList.contains("appear")) {
+        cloud.classList.remove("appear");
+        cloud.classList.add("away");
+        rocket.classList.remove("move");
+        rocket.classList.add("fly");
+      }
+    });
+  });
+});
+
+//maybe
+// function countTotalChecked() {
+//   let count = 0;
+
+//   for (let i = 0; i < checkBoxs.length; i++) {
+//     if (checkBoxs[i].checked) {
+//       count++;
+//     }
+//   }
+//   if (count < 3) {
+//     alert("please select more than three tasks");
+//   }
+// }

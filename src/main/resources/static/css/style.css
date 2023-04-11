@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0%;
   font-family: sans-serif;
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
 }
 
 body {
@@ -13,18 +13,36 @@ body {
 .grid-container {
   display: grid;
   grid-template-columns: auto auto;
-  /* grid-template-rows: max-content; */
   grid-template-areas: "animationSide studyPageSide";
+}
+
+.study-page-side {
+  /* width: 850px; */
+  grid-area: studyPageSide;
+}
+
+.animationArea {
+  grid-area: animationSide;
+  height: 600px;
+  /* width: 900px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  background-color: skyblue;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  border-radius: 50px;
+}
+
+#add-input-group {
+  width: 800px;
 }
 
 h2 {
   font-weight: bold;
-}
-
-.study-page-side {
-  width: 900px;
-  grid-area: studyPageSide;
-  /* border: 2px solid black; */
 }
 
 label {
@@ -36,10 +54,11 @@ label {
   border-radius: 25px;
   border-spacing: 10px;
   margin-bottom: 10px;
+  width: 850px;
 }
 
 #crudTable {
-  width: 900px;
+  width: 800px;
 }
 
 thead {
@@ -120,6 +139,7 @@ table td:nth-child(6) {
 .game-button-group {
   display: flex;
   justify-content: right;
+  width: 850px;
 }
 
 #game-mode-btn {
@@ -127,7 +147,6 @@ table td:nth-child(6) {
   width: 200px;
   background-color: #32bca3;
   font-weight: bold;
-  margin-right: 20px;
   border-radius: 300px;
   color: white;
   font-size: 19px;
@@ -153,14 +172,6 @@ td {
   border: none;
 }
 
-.animationArea {
-  grid-area: animationSide;
-  background-color: dodgerblue;
-  height: 800px;
-  width: 1000px;
-  display: none;
-}
-
 .timer-controller {
   background-color: #32bca3;
   color: white;
@@ -171,7 +182,123 @@ td {
 }
 
 .trophy {
-  margin-top: -30px;
   margin-left: 23%;
   width: 200px;
+}
+
+.step1 {
+  display: none;
+}
+
+/* rocket */
+
+#cloud.hide {
+  display: none;
+}
+
+#cloud.appear {
+  animation: appear 1s ease 0s 1 normal forwards;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0.8;
+    transform: translateY(-250px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#cloud.away {
+  animation: away 1s ease 0s 1 normal forwards;
+}
+
+@keyframes away {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0.8;
+    transform: translateY(800px);
+  }
+}
+
+#fire.hide {
+  display: none;
+}
+
+#whitesmoke.hide {
+  display: none;
+}
+
+#whitesmoke.disappear {
+  animation: disappear 1s ease 0s 1 normal forwards;
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0.8;
+    transform: translateY(300px);
+  }
+}
+
+#rocket.move {
+  animation: rocket 2s linear 0s infinite normal forwards;
+}
+
+@keyframes rocket {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(10px, -10px);
+  }
+
+  40% {
+    transform: translate(10px, 10px);
+  }
+
+  60% {
+    transform: translate(-10px, 10px);
+  }
+
+  80% {
+    transform: translate(-10px, -10px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+#rocket.fly {
+  animation: flyaway 1s ease 0s 1 normal forwards;
+}
+
+@keyframes flyaway {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0.8;
+    transform: translateY(-600px);
+  }
+}
+
+/* visualization */
+#my_dataviz {
+  margin-left: 650px;
 }

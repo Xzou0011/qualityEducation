@@ -1,0 +1,51 @@
+body {
+    height: 100vh;
+    overflow: auto;
+    padding: 10px;
+}
+
+.containerMain {
+    background-image: url("../svg/resource/backgroundImage.svg");
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: 20% 100%;
+    grid-template-areas:
+    "searchBar searchBar"
+    "sideContent mainContent";
+}
+
+.searchContainer {
+    grid-area: searchBar;
+    height: auto;
+    text-align: left;
+    height: auto;
+    padding: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.sideContent {
+    /* width: 850px; */
+    grid-area: sideContent;
+}
+
+.mainContent {
+    /* width: 850px; */
+    grid-area: mainContent;
+}
+
+input {
+    border-radius: 30px;
+    width: 70%;
+    height: 50px;
+    border: 2px solid #32bca3;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+}
