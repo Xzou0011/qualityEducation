@@ -12,11 +12,19 @@ public class MathService {
     @Autowired
     private MathRepository repo;
 
-    public List<Math> listAll() {
-        return repo.findAll();
+//    public List<Math> listAll() {
+//        return repo.findAll();
+//    }
+
+    public List<Math> search(String keyword) {
+        if (keyword != null && !keyword.isEmpty()) {
+            return repo.search(keyword);
+        } else {
+            return repo.findAll();
+        }
     }
 
-//    public List<Math> getRubbishes(String keyword) {
+//    public List<Math> getMathes(String keyword) {
 //        if (keyword != null) {
 //            return repo.search(keyword);
 //        }

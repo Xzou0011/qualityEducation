@@ -5,37 +5,43 @@ body {
 }
 
 .containerMain {
-    background-image: url("../svg/resource/backgroundImage.svg");
+    background-color: #dff0f1;
     background-repeat: no-repeat, repeat;
     background-size: cover;
 }
 
 .gridContainer {
     display: grid;
-    grid-template-columns: 20% 100%;
+    grid-template-columns: auto auto;
     grid-template-areas:
     "searchBar searchBar"
-    "sideContent mainContent";
+    "sideContent sideContent"
+    "mainContent mainContent";
 }
 
 .searchContainer {
     grid-area: searchBar;
     height: auto;
     text-align: left;
-    height: auto;
     padding: 20px;
     margin-left: 10%;
     margin-right: 10%;
 }
 
 .sideContent {
-    /* width: 850px; */
+    width: auto;
     grid-area: sideContent;
+    text-align: left;
+    padding: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
-.mainContent {
-    /* width: 850px; */
+.mainContainer {
     grid-area: mainContent;
+    text-align: left;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 input {
@@ -45,7 +51,40 @@ input {
     border: 2px solid #32bca3;
 }
 
-button {
+.submitBtn {
     background-color: transparent;
     border: none;
+}
+
+.card {
+    border: none;
+    padding: 10px;
+}
+
+.list-group {
+    padding-left: 1.3%;
+}
+
+.caterBtn {
+    width: 35%;
+    border: none;
+    background-color: #32bca3;
+    opacity: 70%;
+    border-radius: 30px;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+li:not(:last-child) {
+    margin-bottom: 3px;
+}
+
+.yearCol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    padding-left: 1.5%;
 }

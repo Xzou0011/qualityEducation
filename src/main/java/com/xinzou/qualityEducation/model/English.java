@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Math {
+public class English {
     @Id
     private int id;
     private String Discipline;
@@ -12,11 +12,9 @@ public class Math {
     private String Chapter;
     private String CD_Code;
     private String Title;
-    private String Subtopic;
-    private String Content_Description;
-    private String Elaboration;
+    private String Description;
 
-    public Math() {
+    public English() {
     }
 
     public int getId() {
@@ -67,27 +65,11 @@ public class Math {
         Title = title;
     }
 
-    public String getSubtopic() {
-        return Subtopic;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setSubtopic(String subtopic) {
-        Subtopic = subtopic;
-    }
-
-    public String getContent_Description() {
-        return Content_Description;
-    }
-
-    public void setContent_Description(String content_Description) {
-        Content_Description = content_Description;
-    }
-
-    public String getElaboration() {
-        return Elaboration;
-    }
-
-    public void setElaboration(String elaboration) {
-        Elaboration = elaboration;
+    public void setDescription(String description) {
+        Description = description;
     }
 }

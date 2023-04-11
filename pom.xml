@@ -8,11 +8,11 @@
 		<version>3.0.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.onboarding</groupId>
-	<artifactId>onboardingProject</artifactId>
+	<groupId>com.xinzou</groupId>
+	<artifactId>qualityEducation</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>onboardingProject</name>
-	<description>FIT5120 onboarding project </description>
+	<name>qualityEducation</name>
+	<description>FIT5120 qualityEducation </description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
