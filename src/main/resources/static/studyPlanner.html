@@ -25,7 +25,7 @@
     &nbsp; &nbsp;&nbsp;
     <a href="studyPlanner.html">My Schedule</a>
     &nbsp;&nbsp;&nbsp;
-    <a href="/math">Resources</a>
+    <a href="learning_program_homepage.html">Resources</a>
     &nbsp;&nbsp;&nbsp;&nbsp;
   </div>
 </div>
@@ -170,10 +170,7 @@
     <div style="display: block" class="mt-5" id="add-input-group">
       <h2>
             <span>
-              <img
-                      class="rocket"
-                      src="svg/studyPlanner/block.svg"
-                      alt="SVG image"
+              <img src="svg/studyPlanner/block.svg" alt="SVG image"
               /></span>
         My Schedule
       </h2>
@@ -183,7 +180,7 @@
       </div>
       <div class="row">
         <div class="form-group col order-first">
-          <label for="name">Name</label>
+          <label for="name">Task Name</label>
           <input
                   type="text"
                   name="name"
@@ -194,7 +191,7 @@
           />
         </div>
         <div class="form-group col">
-          <label for="date">Date</label>
+          <label for="date">Task Date</label>
           <input
                   type="date"
                   name="date"
@@ -205,7 +202,7 @@
           />
         </div>
         <div class="form-group col">
-          <label for="duration">Duration</label>
+          <label for="duration">Task Duration</label>
           <input
                   type="number"
                   name="duration"
@@ -268,7 +265,12 @@
     </div>
   </div>
 </div>
-<div id="my_dataviz"></div>
+<div class="visContainer">
+  <div id="my_dataviz">
+    <div class="fs-4 fw-bold">Study Time vs Study Performance</div>
+    <h6>hover dots to see in detail</h6>
+  </div>
+</div>
 <!-- Tooltip style -->
 <style>
   .Tooltip {
