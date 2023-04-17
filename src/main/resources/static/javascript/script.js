@@ -75,7 +75,9 @@ document.onload = showData();
 
 //when click the complete button the selected row change style
 // to line-through and italic
+// and check if all complete and stop the timer
 const completeButton = document.querySelectorAll(".complete-button");
+let numberCompelted = 0;
 completeButton.forEach((button) => {
   button.addEventListener("click", () => {
     const row = button.parentNode.parentNode;
@@ -87,8 +89,25 @@ completeButton.forEach((button) => {
     selectedRow.getElementsByTagName("tr")[rowIndex].style.fontStyle = "italic";
     //hide the button when click
     button.style.display = "none";
+    //something here
+    numberCompelted++;
+    console.log(numberCompelted + " completed");
+    console.log(numberChecked + " checked");
+    if (numberCompelted === numberChecked) {
+      clickToPause == true;
+      timerController();
+    }
   });
 });
+
+// completeButton.addEventListener("click", function () {
+//   numberCompelted++;
+//   // console.log("Button clicked " + numberCompelted + " times.");
+//   if (numberChecked === numberChecked) {
+//     clickToPause == true;
+//     numberCompelted = 0;
+//   }
+// });
 
 //function to add new created task to local storage
 function AddData() {
@@ -206,6 +225,7 @@ function startGame() {
   animationArea.style.display = "block";
   hideUnchecked();
   hideCheckColumn();
+  countChecked();
 }
 
 //back to the planner page and display all sections
@@ -231,6 +251,7 @@ function cancelGameMode() {
   hideCompleteColumn();
   //clear the check box
   updateCheckBoxToUncheck();
+  location.reload();
   resetTimer();
   showAllRows();
 }
@@ -283,6 +304,18 @@ function hideUnchecked() {
       row.style.display = "table-row";
     }
   });
+}
+
+//check how many tasks haven been checked
+let numberChecked;
+function countChecked() {
+  numberChecked = 0;
+  checkBoxs.forEach((checkbox) => {
+    if (checkbox.checked) {
+      numberChecked++;
+    }
+  });
+  // console.log("number of checked" + numberChecked);
 }
 
 //show all the rows after the user cancel the game mode
@@ -409,20 +442,6 @@ function checkComplete() {
 }
 
 //animation
-
-// completeButton.forEach((button) => {
-//   button.addEventListener("click", () => {
-//     const row = button.parentNode.parentNode;
-//     const rowIndex = Array.from(row.parentNode.children).indexOf(row);
-//     const selectedRow =
-//       completeButton[rowIndex].parentNode.parentNode.parentNode;
-//     selectedRow.getElementsByTagName("tr")[rowIndex].style.textDecoration =
-//       "line-through";
-//     selectedRow.getElementsByTagName("tr")[rowIndex].style.fontStyle = "italic";
-//     //hide the button when click
-//     button.style.display = "none";
-//   });
-// });
 
 const rocketGroup = document.getElementById("rocketGroup");
 const rocket = document.getElementById("rocket");
