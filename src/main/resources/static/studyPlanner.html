@@ -267,12 +267,177 @@
     </div>
   </div>
 </div>
+
 <div class="steps-container mt-5">
-  <div class="fs-4 fw-bold">Instrucation</div>
+  <div class="fs-3 fw-bolder">
+    <span> <img src="svg/studyPlanner/block.svg" alt="SVG image" /></span>
+    Instruction
+  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <!-- modal button -->
+  <div class="btn-container mt-4">
+    <button
+            type="button"
+            class="btn modal-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#studyPlannerModal"
+    >
+      My Schedule Guide
+    </button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button
+            type="button"
+            class="btn modal-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#gameModal"
+    >
+      Game Guide
+    </button>
+  </div>
+
+  <!-- Modal -->
+  <div
+          class="modal fade"
+          id="studyPlannerModal"
+          tabindex="-1"
+          aria-labelledby="studyPlannerModalLabel"
+          aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-3 fw-bolder" id="staticBackdropLabel">
+            My schedule Guide
+          </h1>
+          <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body" style="text-align: left">
+          <div class="small">
+            <div class="mt-1">
+              <div class="fw-bold">Step 1.</div>
+              Enter task name that you prefer to complete in the “Task Name”
+              box.
+            </div>
+            <div class="mt-3">
+              <div class="fw-bold">Step 2.</div>
+              Choose a date that you prefer to complete the task.
+            </div>
+            <div class="mt-3">
+              <div class="fw-bold">Step 3.</div>
+              In the duration box, please put the preferred time in minutes
+              for each yet to complete task
+            </div>
+            <div class="mt-3">
+              <div class="fw-bold">Step 4.</div>
+              Then, press the “Add Data” button
+            </div>
+            <div class="mt-3">
+              <div class="fw-bold">Step 5.</div>
+              After adding the tasks that need to be completed, click “Game
+              Start” button
+            </div>
+            <div class="mt-3">
+              <div class="fw-bold">Step 6.</div>
+              It will then guide you to a new page with all the tasks that
+              have been added as to-do list
+            </div>
+            <div class="mt-3">
+              <div class="fw-bold">Step 7.</div>
+              To start the game, click the checkbox before you start the
+              game
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+          class="modal fade"
+          id="gameModal"
+          tabindex="-1"
+          aria-labelledby="studyPlannerModalLabel"
+          aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-3 fw-bolder" id="staticBackdropLabel">
+            Game Guide
+          </h1>
+          <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body" style="text-align: left">
+          <div class="small">
+            <div class="mt-1">
+              <div class="fw-bold">Step 1.</div>
+              Click the “Start” button to start or pause the game for your
+              task.
+            </div>
+            <div class="mt-3">
+              <div class="fw-bold">Step 2.</div>
+              Users can click the “complete” button to mark the tasks as
+              completed, then the rocket will start to launch.
+            </div>
+            <div class="mt-3">
+              <div class="fw-bold">Step 3.</div>
+              The completed tasks will be deleted from the study planner.
+            </div>
+            <div class="mt-3">
+              <div class="fw-bold">Step 4.</div>
+              Repeat step 2 for other tasks.
+            </div>
+            <div class="mt-3">
+              <div class="fw-bold">Step 5.</div>
+              Once all the tasks are completed, the rocket will launch to
+              another galaxy and that marks an end for the game.
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<img class="trophy" src="svg/studyPlanner/trophy.svg" alt="SVG image" />
 <footer class="footer">
   <img src="svg/studyPlanner/footer_studyPlanner.svg" alt="SVG image" />
 </footer>
+<script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+        integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+        crossorigin="anonymous"
+></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+        integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+        crossorigin="anonymous"
+></script>
+<script src="javascript/script.js"></script>
 </body>
 </html>

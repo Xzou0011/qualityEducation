@@ -299,9 +299,20 @@ td {
 }
 
 /* visualization */
-
 .steps-container {
   display: flex;
   justify-content: center;
-  text-align: center;
+  align-items: center;
+}
+
+.modal-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3f15ea;
+  color: white;
+  border-radius: 30px;
+  height: auto;
+  font-weight: bold;
+  width: 300px;
 }

@@ -1,28 +1,20 @@
 * {
-    margin: 0;
-    padding: 0%;
-    font-family: sans-serif;
+  margin: 0;
+  padding: 0%;
+  font-family: sans-serif;
+  box-sizing: border-box;
 }
 
 footer {
-    height: 50px;
-    position: relative;
-    bottom: 0;
+  height: 50px;
+  position: relative;
+  bottom: 0;
 }
 
-/* .vis {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  margin-right: 2000px;
-} */
+#my_dataviz {
+  margin-top: -20%;
+}
 
 .myCircle:hover {
-    stroke: black;
-}
-
-a {
-    /*font-weight: 18px;*/
-    color: #191d21;
-    text-decoration: none;
+  stroke: black;
 }
