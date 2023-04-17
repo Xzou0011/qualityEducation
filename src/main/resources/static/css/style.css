@@ -300,7 +300,7 @@ td {
 
 /* visualization */
 
-.visContainer {
+.steps-container {
   display: flex;
   justify-content: center;
   text-align: center;

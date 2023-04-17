@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0%;
+    font-family: sans-serif;
+}
+
+footer {
+    height: 50px;
+    position: relative;
+    bottom: 0;
+}
+
+/* .vis {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-right: 2000px;
+} */
+
+.myCircle:hover {
+    stroke: black;
+}
+
+a {
+    /*font-weight: 18px;*/
+    color: #191d21;
+    text-decoration: none;
+}
